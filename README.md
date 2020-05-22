@@ -4,7 +4,7 @@ Application that produces a random password with custom length and character typ
 
 ## Image
 
-![Screenshot of Password Generator] (Screenshot(21).png)
+![Screenshot of Password Generator] (https://raw.githubusercontent.com/LexTheMenace/passwordGenerator/master/Screenshot(21).png)
 
 
 
