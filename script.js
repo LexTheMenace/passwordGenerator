@@ -64,12 +64,13 @@ function writePassword() {
       possibleChar.push("!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=")
     };
 
+    //Alert div
     const alert = document.getElementById('alert');
 
     //if User selects none
     if (lowerCase === false && upperCase === false && numChar === false && specialChar === false) {
       alert.style.display = 'flex';
-      setTimeout(() => alert.style.display = 'none', 1500);
+      setTimeout(() => alert.style.display = 'none', 2500);
     }
     else {
       var password = "";
