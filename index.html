@@ -14,9 +14,49 @@
       </header>
       <div class="card">
         <div class="card-header">
+          <div class="card-header-theme">
+
           <h2>Generate a Password</h2>
+          <div class="theme-options">
+            <label for='theme'>Change Theme:</label>
+            <input id='theme' type='color' value='#6ea136'/>
+            <form name='textColorForm' >
+              <label>Text Color:
+              </label>          <input id='black' name='textColor' type='radio' value='black' checked>
+              <label for="black">Black</label>
+              <input id='white' name='textColor' type='radio' value='white'>
+              <label for="white">White</label>
+            </form>
+          </div>
+          </div>
         </div>
-        <div class="card-body">
+        <div class="card-body userInput"><div>
+          <div id='alert'>
+              <span> YOU MUST PICK AT LEAST ONE OPTION!</span>
+          </div>
+          <div class='input-group'>
+            <label for='charcount' >Pick a password length. (Between 8 and 128.) </label>
+            <input value='8' id='charcount' type='number' min='8' max='128' />
+          </div>
+          <div class='input-group'>
+            <label for='lowercase' >Include lowercase letters? </label>
+            <input id='lowercase' type='checkbox' />
+          </div>
+          <div class='input-group'>
+            <label for='uppercase' > Include uppercase letters? </label>
+            <input id='uppercase' type='checkbox' />
+          </div>
+          <div class='input-group'>
+            <label for='numbers' > Include numbers? </label>
+            <input id='numbers' type='checkbox' />
+          </div>
+          <div class='input-group'>
+            <label for='special' > Include special characters? </label>  
+            <input id='special' type='checkbox' />
+          </div>
+        </div>
+      </div>
+        <div class="card-body results" id='results'>
           <textarea
             readonly
             id="password"

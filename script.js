@@ -1,63 +1,95 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+const generateBtn = document.querySelector("#generate");
 
+//Theme button
+const themeBtn = document.getElementById('theme');
+
+// change color function 
+
+const themeChange = () => {
+const newColor = themeBtn.value;
+console.log(newColor);
+  document.querySelector(':root').style.setProperty('--color', newColor);
+}
+
+// change text color function
+  var textColorOptions = document.textColorForm.textColor;
+  console.log(textColorOptions);
+  var prev = null;
+  for(var i = 0; i < textColorOptions.length; i++) {
+     textColorOptions[i].onclick = function () {
+          (prev) ? console.log(prev.value) : null;
+          if(this !== prev) {
+              prev = this;
+          }
+          document.querySelector(':root').style.setProperty('--textColor', this.value);
+
+      };
+  };
+
+// Theme event listener
+themeBtn.addEventListener('change', () => themeChange());
 
 // Write password to the #password input
 function writePassword() {
-// How long? 
-var passLength = prompt("Pick a password length. (Between 8 and 128 characters.)")
+  // How long? 
+  const passLength = parseInt(document.getElementById('charcount').value);
 
-if (passLength > 7 && passLength < 129) { 
- 
-  //Prompt for password criteria
-var lowerCase = confirm("Include lowercase letters?")
-var upperCase = confirm("Include uppercase letters?")
-var numChar = confirm("Include numbers?")
-var specialChar = confirm("Include special characters?")
+  if (passLength > 7 && passLength < 129) {
 
-var possibleChar = [];
+    //Prompt for password criteria
+    const lowerCase = document.getElementById('lowercase').checked;
+    const upperCase = document.getElementById('uppercase').checked;
+    const numChar = document.getElementById('numbers').checked;
+    const specialChar = document.getElementById('special').checked;
 
-        if(lowerCase) {
-            possibleChar.push("a","b","c","d","e","f","g","h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
-           }
-        if (upperCase) {
-            possibleChar.push("A","B","C","D","E","F","G","H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
-            }
-        if(numChar) {
-      
-          for (var i = 0; i < 10; i++) {
-            possibleChar.push(i);
-               } }
+    const possibleChar = [];
 
-        if(specialChar) {
-             possibleChar.push("!", "@", "#", "$", "%", "^", "&",  "*", "(", ")", "-", "_", "=")
-                      }
+    if (lowerCase) {
+      possibleChar.push("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
+    };
 
-            
+    if (upperCase) {
+      possibleChar.push("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
+    };
 
- //if User selects none
-          if (lowerCase === false && upperCase === false && numChar === false && specialChar === false){
-              alert("You must choose at least one!")
-          }
-          else {    
+    if (numChar) {
 
-            var password = "";
+      for (var i = 0; i < 10; i++) {
+        possibleChar.push(i);
+      }
+    };
 
-            for (var i = 0; i < passLength; i++) {
-             
-              var position = Math.floor(Math.random() * possibleChar.length)
-              password =password + possibleChar[position];
+    if (specialChar) {
+      possibleChar.push("!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=")
+    };
 
-              var passwordText = document.querySelector("#password");         
-              passwordText.value = password  
-            }}}       
-else {
-alert("Password must be between 8 and 128 chars.")
-}        
-} 
+    const alert = document.getElementById('alert');
 
+    //if User selects none
+    if (lowerCase === false && upperCase === false && numChar === false && specialChar === false) {
+      alert.style.display = 'flex';
+      setTimeout(() => alert.style.display = 'none', 1500);
+    }
+    else {
+      var password = "";
+
+      for (var i = 0; i < passLength; i++) {
+
+        var position = Math.floor(Math.random() * possibleChar.length);
+        password = password + possibleChar[position];
+
+        const passwordText = document.querySelector("#password");
+        passwordText.value = password;
+        document.getElementById('results').style.display = 'block'
+      }
+    }
+  }
+  else {
+    alert("Password must be between 8 and 128 chars.")
+  }
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
  //var password = generatePassword();
-
